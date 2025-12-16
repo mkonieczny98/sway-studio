@@ -32,9 +32,11 @@ export default config({
           description: fields.text({ label: 'Opis', multiline: true }),
           buttonText: fields.text({ label: 'Tekst przycisku', defaultValue: 'Zapisz się na zajęcia' }),
           // Zdjęcie Hero
-          heroImage: fields.url({
+          heroImage: fields.image({
             label: '🖼️ Zdjęcie tła Hero',
-            description: 'Wklej link do zdjęcia (zalecany rozmiar: 1920x1080px)',
+            description: 'Zalecany rozmiar: 1920x1080px lub większe.',
+            directory: 'public/images/hero',
+            publicPath: '/images/hero/',
           }),
           // Kolory Hero
           colors: fields.object({
@@ -52,13 +54,17 @@ export default config({
           feature2: fields.text({ label: 'Cecha 2', defaultValue: 'Małe grupy' }),
           feature3: fields.text({ label: 'Cecha 3', defaultValue: 'Przyjazna atmosfera' }),
           // Zdjęcia
-          image1: fields.url({
+          image1: fields.image({
             label: '🖼️ Zdjęcie główne (duże)',
-            description: 'Wklej link do zdjęcia (zalecany rozmiar: 800x700px)',
+            description: 'Zalecany rozmiar: 800x700px',
+            directory: 'public/images/about',
+            publicPath: '/images/about/',
           }),
-          image2: fields.url({
+          image2: fields.image({
             label: '🖼️ Zdjęcie drugie (mniejsze)',
-            description: 'Wklej link do zdjęcia (zalecany rozmiar: 700x440px)',
+            description: 'Zalecany rozmiar: 700x440px',
+            directory: 'public/images/about',
+            publicPath: '/images/about/',
           }),
           // Kolory About
           colors: fields.object({
@@ -92,9 +98,11 @@ export default config({
           text: fields.text({ label: 'Opis', multiline: true }),
           buttonText: fields.text({ label: 'Tekst przycisku', defaultValue: 'Kup voucher' }),
           // Zdjęcie
-          image: fields.url({
+          image: fields.image({
             label: '🖼️ Zdjęcie vouchera',
-            description: 'Wklej link do zdjęcia (zalecany rozmiar: 1000x800px)',
+            description: 'Zalecany rozmiar: 1000x800px',
+            directory: 'public/images/promo',
+            publicPath: '/images/promo/',
           }),
           // Kolory Voucher
           colors: fields.object({
@@ -361,9 +369,11 @@ export default config({
         title: fields.slug({ name: { label: 'Nazwa zajęć (np. Pole Dance)' } }),
         shortDesc: fields.text({ label: 'Krótki opis (1-2 zdania)', multiline: true }),
         fullDesc: fields.text({ label: 'Pełny opis', multiline: true }),
-        image: fields.url({ 
+        image: fields.image({ 
           label: '🖼️ Zdjęcie zajęć', 
-          description: 'Wklej link do zdjęcia',
+          description: 'Zdjęcie zajęć',
+          directory: 'public/images/zajecia',
+          publicPath: '/images/zajecia/',
         }),
         imageOrientation: fields.select({
           label: 'Orientacja zdjęcia',
