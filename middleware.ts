@@ -5,6 +5,11 @@ const KEYSTATIC_USERNAME = process.env.KEYSTATIC_USERNAME || 'admin';
 const KEYSTATIC_PASSWORD = process.env.KEYSTATIC_PASSWORD || 'sway2024';
 
 export function middleware(request: NextRequest) {
+  // W produkcji (GitHub mode) Keystatic ma własną autoryzację przez GitHub OAuth
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.next();
+  }
+
   // Sprawdź czy to ścieżka keystatic (ale nie API logowania)
   const isKeystatic = request.nextUrl.pathname.startsWith('/keystatic') || 
                       request.nextUrl.pathname.startsWith('/api/keystatic');
