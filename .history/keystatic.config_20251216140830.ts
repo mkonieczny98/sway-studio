@@ -33,9 +33,9 @@ export default config({
           description: fields.text({ label: 'Opis', multiline: true }),
           buttonText: fields.text({ label: 'Tekst przycisku', defaultValue: 'Zapisz się na zajęcia' }),
           // Zdjęcie Hero
-          heroImage: cloudinaryImage({
-            label: '🖼️ Zdjęcie tła Hero',
-            description: 'Zalecany rozmiar: 1920x1080px lub większe.',
+          heroImage: fields.text({
+            label: '🖼️ Zdjęcie tła Hero (URL)',
+            description: 'Wklej link do zdjęcia. Zalecany rozmiar: 1920x1080px lub większe.',
           }),
           // Kolory Hero
           colors: fields.object({
@@ -53,13 +53,13 @@ export default config({
           feature2: fields.text({ label: 'Cecha 2', defaultValue: 'Małe grupy' }),
           feature3: fields.text({ label: 'Cecha 3', defaultValue: 'Przyjazna atmosfera' }),
           // Zdjęcia
-          image1: cloudinaryImage({
-            label: '🖼️ Zdjęcie główne (duże)',
-            description: 'Zalecany rozmiar: 800x700px',
+          image1: fields.text({
+            label: '🖼️ Zdjęcie główne (duże) - URL',
+            description: 'Wklej link do zdjęcia. Zalecany rozmiar: 800x700px',
           }),
-          image2: cloudinaryImage({
-            label: '🖼️ Zdjęcie drugie (mniejsze)',
-            description: 'Zalecany rozmiar: 700x440px',
+          image2: fields.text({
+            label: '🖼️ Zdjęcie drugie (mniejsze) - URL',
+            description: 'Wklej link do zdjęcia. Zalecany rozmiar: 700x440px',
           }),
           // Kolory About
           colors: fields.object({
@@ -93,9 +93,9 @@ export default config({
           text: fields.text({ label: 'Opis', multiline: true }),
           buttonText: fields.text({ label: 'Tekst przycisku', defaultValue: 'Kup voucher' }),
           // Zdjęcie
-          image: cloudinaryImage({
-            label: '🖼️ Zdjęcie vouchera',
-            description: 'Zalecany rozmiar: 1000x800px',
+          image: fields.text({
+            label: '🖼️ Zdjęcie vouchera (URL)',
+            description: 'Wklej link do zdjęcia. Zalecany rozmiar: 1000x800px',
           }),
           // Kolory Voucher
           colors: fields.object({
@@ -362,9 +362,9 @@ export default config({
         title: fields.slug({ name: { label: 'Nazwa zajęć (np. Pole Dance)' } }),
         shortDesc: fields.text({ label: 'Krótki opis (1-2 zdania)', multiline: true }),
         fullDesc: fields.text({ label: 'Pełny opis', multiline: true }),
-        image: cloudinaryImage({ 
-          label: '🖼️ Zdjęcie zajęć', 
-          description: 'Kliknij "Dodaj zdjęcie" aby wrzucić nowe zdjęcie',
+        image: fields.text({ 
+          label: 'Zdjęcie zajęć (URL)', 
+          description: 'Wklej link do zdjęcia (np. z Cloudinary lub innego hostingu)',
         }),
         imageOrientation: fields.select({
           label: 'Orientacja zdjęcia',
