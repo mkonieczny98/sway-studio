@@ -14,7 +14,6 @@
     "@keystatic/core": "^0.5.48",
     "@keystatic/next": "^5.0.4",
     "@payloadcms/db-mongodb": "^3.68.5",
-    "@payloadcms/db-vercel-postgres": "^3.68.5",
     "@payloadcms/next": "^3.68.5",
     "@payloadcms/richtext-lexical": "^3.68.5",
     "cloudinary": "^2.8.0",
