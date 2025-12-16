@@ -1,14 +1,18 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 import { colorField } from './lib/color-field';
-import { cloudinaryImage } from './lib/cloudinary-image-field';
+
+// Wykryj środowisko
+const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
 
 export default config({
-  storage: {
-    kind: 'cloud',
-  },
-  cloud: {
-    project: 'sway/sway-studio',
-  },
+  storage: isProduction
+    ? {
+        kind: 'github',
+        repo: 'mkonieczny98/sway-studio',
+      }
+    : {
+        kind: 'local',
+      },
   ui: {
     brand: {
       name: 'Sway Studio - Panel',
@@ -33,9 +37,11 @@ export default config({
           description: fields.text({ label: 'Opis', multiline: true }),
           buttonText: fields.text({ label: 'Tekst przycisku', defaultValue: 'Zapisz się na zajęcia' }),
           // Zdjęcie Hero
-          heroImage: cloudinaryImage({
+          heroImage: fields.image({
             label: '🖼️ Zdjęcie tła Hero',
             description: 'Zalecany rozmiar: 1920x1080px lub większe.',
+            directory: 'public/images/hero',
+            publicPath: '/images/hero/',
           }),
           // Kolory Hero
           colors: fields.object({
@@ -53,13 +59,17 @@ export default config({
           feature2: fields.text({ label: 'Cecha 2', defaultValue: 'Małe grupy' }),
           feature3: fields.text({ label: 'Cecha 3', defaultValue: 'Przyjazna atmosfera' }),
           // Zdjęcia
-          image1: cloudinaryImage({
+          image1: fields.image({
             label: '🖼️ Zdjęcie główne (duże)',
             description: 'Zalecany rozmiar: 800x700px',
+            directory: 'public/images/about',
+            publicPath: '/images/about/',
           }),
-          image2: cloudinaryImage({
+          image2: fields.image({
             label: '🖼️ Zdjęcie drugie (mniejsze)',
             description: 'Zalecany rozmiar: 700x440px',
+            directory: 'public/images/about',
+            publicPath: '/images/about/',
           }),
           // Kolory About
           colors: fields.object({
@@ -93,9 +103,11 @@ export default config({
           text: fields.text({ label: 'Opis', multiline: true }),
           buttonText: fields.text({ label: 'Tekst przycisku', defaultValue: 'Kup voucher' }),
           // Zdjęcie
-          image: cloudinaryImage({
+          image: fields.image({
             label: '🖼️ Zdjęcie vouchera',
             description: 'Zalecany rozmiar: 1000x800px',
+            directory: 'public/images/promo',
+            publicPath: '/images/promo/',
           }),
           // Kolory Voucher
           colors: fields.object({
@@ -362,9 +374,11 @@ export default config({
         title: fields.slug({ name: { label: 'Nazwa zajęć (np. Pole Dance)' } }),
         shortDesc: fields.text({ label: 'Krótki opis (1-2 zdania)', multiline: true }),
         fullDesc: fields.text({ label: 'Pełny opis', multiline: true }),
-        image: cloudinaryImage({ 
+        image: fields.image({ 
           label: '🖼️ Zdjęcie zajęć', 
-          description: 'Kliknij "Dodaj zdjęcie" aby wrzucić nowe zdjęcie',
+          description: 'Zdjęcie zajęć',
+          directory: 'public/images/zajecia',
+          publicPath: '/images/zajecia/',
         }),
         imageOrientation: fields.select({
           label: 'Orientacja zdjęcia',
