@@ -1,18 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+const KEYSTATIC_USERNAME = process.env.KEYSTATIC_USERNAME || 'admin';
+const KEYSTATIC_PASSWORD = process.env.KEYSTATIC_PASSWORD || 'sway2024';
+
 export function middleware(request: NextRequest) {
-  // Na Vercel middleware nie jest potrzebny - Keystatic używa GitHub OAuth
-  // Middleware działa tylko lokalnie dla custom auth
-  const isVercel = process.env.VERCEL === '1';
-  
-  if (isVercel) {
+  // W produkcji (GitHub mode) Keystatic ma własną autoryzację przez GitHub OAuth
+  if (process.env.NODE_ENV === 'production') {
     return NextResponse.next();
   }
-
-  // Lokalna autoryzacja
-  const KEYSTATIC_USERNAME = process.env.KEYSTATIC_USERNAME || 'admin';
-  const KEYSTATIC_PASSWORD = process.env.KEYSTATIC_PASSWORD || 'sway2024';
 
   // Sprawdź czy to ścieżka keystatic (ale nie API logowania)
   const isKeystatic = request.nextUrl.pathname.startsWith('/keystatic') || 
