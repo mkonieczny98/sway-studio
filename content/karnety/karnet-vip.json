@@ -1,0 +1,13 @@
+{
+  "name": "Karnet VIP",
+  "entries": "20x",
+  "price": "450 zł",
+  "period": "miesięcznie",
+  "features": [
+    "WOW 22,50 zł za 1 zajęcia",
+    "Limit 20 zajęć",
+    "Wejście na każdy rodzaj zajęć"
+  ],
+  "isPopular": false,
+  "order": 4
+}

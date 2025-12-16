@@ -1,0 +1,13 @@
+{
+  "name": "VIP PRO",
+  "entries": "bez limitu",
+  "price": "510 zł",
+  "period": "miesięcznie",
+  "features": [
+    "Nielimitowana ilość zajęć",
+    "Dowolny rodzaj zajęć ",
+    "Ważność 30 dni"
+  ],
+  "isPopular": false,
+  "order": 6
+}

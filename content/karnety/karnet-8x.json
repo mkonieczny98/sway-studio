@@ -1,0 +1,13 @@
+{
+  "name": "Karnet 8x",
+  "entries": "8x",
+  "price": "345 zł",
+  "period": "miesięcznie",
+  "features": [
+    "Dowolne zajęcia grupowe",
+    "Najpopularniejszy wybór",
+    "Ważność 30 dni"
+  ],
+  "isPopular": true,
+  "order": 2
+}

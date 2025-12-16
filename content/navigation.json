@@ -1,0 +1,11 @@
+{
+  "menuItems": [
+    { "label": "Zajęcia", "href": "/zajecia" },
+    { "label": "Cennik", "href": "/cennik" },
+    { "label": "Grafik", "href": "/grafik" },
+    { "label": "FAQ", "href": "/faq" },
+    { "label": "Regulamin", "href": "/regulamin" },
+    { "label": "Kontakt", "href": "/kontakt" }
+  ],
+  "ctaButtonText": "Zapisz się"
+}

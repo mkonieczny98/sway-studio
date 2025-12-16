@@ -1,0 +1,13 @@
+{
+  "name": "INNE 8x wejść",
+  "entries": "INNE 8x",
+  "price": "300 zł",
+  "period": "miesięcznie",
+  "features": [
+    "Obejmuje wejścia z kategorii INNE",
+    "Korzystna cena",
+    "Ważność 30 dni"
+  ],
+  "isPopular": false,
+  "order": 8
+}

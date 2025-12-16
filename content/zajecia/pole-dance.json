@@ -1,0 +1,16 @@
+{
+  "title": "Pole Dance",
+  "shortDesc": "Taniec na rurze łączący akrobatykę oraz taniec. Buduj siłę, mobilność i pewność siebie.",
+  "fullDesc": "Pole dance stanowi połączenie tańca, akrobatyki oraz ćwiczeń siłowych. Na zajęciach poznasz pojedyncze figury, które z czasem nauczysz łączyć się w kombinacje. Zaczynamy od zupełnych podstaw i stopniowo sięgamy po więcej, aż zawiśniemy w głową w dół!",
+  "image": "/images/zajecia/pole-dance/image.jpeg",
+  "imageOrientation": "vertical",
+  "maxPeople": "max. 8 osób",
+  "duration": "60 min",
+  "features": [
+    "Budowanie siły",
+    "Poprawa koordynacji",
+    "Zwiększenie pewności siebie"
+  ],
+  "showOnHome": true,
+  "order": 1
+}

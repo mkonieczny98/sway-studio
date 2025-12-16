@@ -1,0 +1,13 @@
+{
+  "name": "Karnet 4x",
+  "entries": "4x",
+  "price": "220 zł",
+  "period": "miesięcznie",
+  "features": [
+    "Wybór przy zajęciach x 1 w tygodniu ",
+    "Dowolne zajęcia grupowe",
+    "Ważność 30 dni"
+  ],
+  "isPopular": false,
+  "order": 1
+}

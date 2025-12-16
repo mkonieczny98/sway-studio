@@ -1,0 +1,12 @@
+{
+  "title": "Exotic Pole",
+  "shortDesc": "Zmysłowy taniec na obcasach łączący pole dance z elementami tańca współczesnego.",
+  "fullDesc": "Exotic pole to połączenie pole dance z elementami tańca współczesnego, wykonywanego w butach na obcasach. Zajęcia rozwijają kobiecość i pewność siebie.",
+  "image": "https://swaypoledancestudio.pl/wp-content/uploads/2022/09/3B0A9149-1024x819.jpg",
+  "maxPeople": "max. 10 osób",
+  "duration": "60 min",
+  "requirements": "Buty na obcasach (opcjonalnie)",
+  "features": ["Rozwój kobiecości", "Poprawa postawy", "Większa pewność siebie"],
+  "showOnHome": true,
+  "order": 3
+}

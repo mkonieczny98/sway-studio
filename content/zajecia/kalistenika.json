@@ -1,0 +1,12 @@
+{
+  "title": "Kalistenika",
+  "shortDesc": "Trening siłowy z wykorzystaniem własnego ciała - buduj siłę funkcjonalną.",
+  "fullDesc": "Kalistenika to trening siłowy wykorzystujący masę własnego ciała. Budujesz siłę funkcjonalną, wytrzymałość i kontrolę nad własnym ciałem.",
+  "image": "https://swaypoledancestudio.pl/wp-content/uploads/2022/09/3B0A9327-1024x819.jpg",
+  "maxPeople": "max. 12 osób",
+  "duration": "60 min",
+  "requirements": "",
+  "features": ["Budowanie siły", "Poprawa wytrzymałości", "Kontrola ciała"],
+  "showOnHome": true,
+  "order": 5
+}

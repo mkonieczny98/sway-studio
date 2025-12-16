@@ -1,0 +1,107 @@
+{
+  "heroTitle": "CENNIK",
+  "heroSubtitle": "Wszystkie karnety ważne są 30 dni od daty pierwszych zajęć",
+  "categories": [
+    {
+      "name": "KARNETY ",
+      "items": [
+        {
+          "name": "4x wejścia",
+          "price": "220 zł"
+        },
+        {
+          "name": "8x wejść ",
+          "price": "345 zł"
+        },
+        {
+          "name": "12x wejść ",
+          "price": "395 zł"
+        },
+        {
+          "name": "VIP | 20 wejść ",
+          "price": "450 zł"
+        },
+        {
+          "name": "VIP PRO | bez limitu wejść"
+        },
+        {
+          "name": "4x wejścia + 4 wejścia INNE",
+          "price": "320 zł"
+        },
+        {
+          "name": "4x wejścia INNE",
+          "price": "155 zł"
+        },
+        {
+          "name": "8x wejść INNE",
+          "price": "300 zł"
+        }
+      ]
+    },
+    {
+      "name": "WEJŚCIA JEDNORAZOWE  ",
+      "items": [
+        {
+          "name": "pierwsze zajęcia PROMOCJA",
+          "price": "40 zł"
+        },
+        {
+          "name": "jednorazowe zajęcia PD/AH/EXOTIC",
+          "price": "70 zł"
+        },
+        {
+          "name": "jednorazowe zajęcia INNE",
+          "price": "55 zł"
+        }
+      ]
+    },
+    {
+      "name": "ZAJĘCIA INDYWIDUALNE ",
+      "items": [
+        {
+          "name": "indywidualne PD/AH",
+          "price": "150 zł"
+        },
+        {
+          "name": "indywidualne PD z Joanną Olejniczak",
+          "price": "200 zł"
+        },
+        {
+          "name": "indywidualne PD/AH (2 osoby)",
+          "price": "220 zł"
+        },
+        {
+          "name": "indywidualne PD z J. Olejniczak (2 osoby)",
+          "price": "300 zł"
+        }
+      ]
+    },
+    {
+      "name": "POZOSTAŁE",
+      "items": [
+        {
+          "name": "wynajem sali na trening 1 h",
+          "price": "60 zł kursantki Sway"
+        },
+        {
+          "name": "wynajem sali na trening 1 h",
+          "price": "80 zł"
+        },
+        {
+          "name": "wynajem sali pod sesje, eventy",
+          "price": "od 160 zł"
+        },
+        {
+          "name": "voucher podarunkowy",
+          "price": "od 100 zł"
+        }
+      ]
+    }
+  ],
+  "bankSection": {
+    "bankName": "Mbank",
+    "accountNumber": "56 1140 2004 0000 3702 8505 7568",
+    "recipient": "SWAY  adres Jesionowa 18 Poznań",
+    "titleInfo": "Imię i nazwisko + rodzaj karnetu"
+  }
+}

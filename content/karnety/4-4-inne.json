@@ -1,0 +1,13 @@
+{
+  "name": "4+4 INNE",
+  "entries": "4 + 4",
+  "price": "320 zł",
+  "period": "miesięcznie",
+  "features": [
+    "4 wejścia ogólne ",
+    "4 wejścia INNE",
+    "Ważność 30 dni"
+  ],
+  "isPopular": true,
+  "order": 2
+}

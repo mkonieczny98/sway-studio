@@ -1,0 +1,16 @@
+{
+  "title": "Aerial Hoop",
+  "shortDesc": "Akrobatyka na kole - figury i pozycje w powietrzu na kole cyrkowym.",
+  "fullDesc": "Aerial hoop (lyra) to akrobatyka na podwieszanym kole stalowym, można je porównać do zabawy na trzepaku. Nauczymy Cię tańczyć w powietrzu, poznasz podstawowe figury i pozycje. Nie jest wymagane żadne doświadczenie. ",
+  "image": "/images/zajecia/aerial-hoop/image.jpeg",
+  "imageOrientation": "vertical",
+  "maxPeople": "max. 9 osób",
+  "duration": "60 min",
+  "features": [
+    "Budowanie siły",
+    "Poprawa koordynacji",
+    "Przełamywanie głowy"
+  ],
+  "showOnHome": true,
+  "order": 2
+}

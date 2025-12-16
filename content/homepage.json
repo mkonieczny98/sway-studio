@@ -1,0 +1,109 @@
+{
+  "heroSection": {
+    "title": "NAUCZ SIĘ",
+    "highlight": "LATAĆ",
+    "subtitle": "STUDIO SWAY",
+    "description": "Odkryj pasję do sportów aerial — trenuj, bo chcesz, nie bo powinnaś! Oferujemy przeróżne zajęcia na każdym poziomie zaawansowania. ",
+    "buttonText": "ZOBACZ GRAFIK ",
+    "colors": {
+      "titleColor": "#ffffff",
+      "highlightColor": "#7d8c6e",
+      "subtitleColor": "#7d8c6e",
+      "descColor": "#7d8c6e"
+    }
+  },
+  "aboutSection": {
+    "title": "Witaj w Sway!",
+    "text": "Studio Sway powstało by móc dzielić się pasją do pole dance oraz aerial hoop, i nie tylko!\n\nZajęcia są dla każdego – nie musisz mieć silnych rąk, nóg, czy brzucha – dokładnie po to przychodzi się na zajęcia. Co więcej, to przede wszystkim świetna zabawa oraz przełamywanie własnych barier.\n\nW naszym grafiku oprócz grup pole dance oraz aerial hoop na różnym stopniu zaawansowania znajdziesz zajęcia takie jak: exotic, stretching, kalistnikę, jogę, wzmacnianie czy barre. Regularnie organizujemy także różne sportowe warsztaty.\n\nZnajdziesz nas w Poznianiu na ul. Jesionowej 18.",
+    "feature1": "dwie sale - grafik pełen możliwości ",
+    "feature2": "profesjonalna kadra",
+    "feature3": "przyjazna atmosfera",
+    "image2": "/images/about/aboutSection/image2.jpeg",
+    "colors": {
+      "bgColor": "#fdfbf7",
+      "titleColor": "#3d3329",
+      "textColor": "#5c5145",
+      "featureIconColor": "#7d8c6e",
+      "featureTextColor": "#3d3329"
+    }
+  },
+  "promoSection": {
+    "title": "Pierwsze zajęcia ",
+    "price": "40 zł",
+    "description": "Spróbuj naszych zajęć w promocyjnej cenie! Przekonaj się, czy zajęcia z naszej oferty są dla Ciebie.",
+    "buttonText": "Zarezerwuj termin",
+    "colors": {
+      "bgColor": "#f5f0e8",
+      "labelColor": "#7d8c6e",
+      "titleColor": "#3d3329",
+      "priceColor": "#7d8c6e",
+      "textColor": "#5c5145",
+      "buttonBg": "#7d8c6e",
+      "buttonText": "#ffffff"
+    }
+  },
+  "voucherSection": {
+    "title": "Podaruj wyjątkowy prezent",
+    "text": "Voucher na zajęcia to idealny pomysł na prezent dla przyjaciółki, dziewczyny, siostry czy mamy. Daj jej szansę na odkrycie nowej pasji! Może dotyczyć zajęć grupowych lub indywidualnych.",
+    "buttonText": "Kup voucher",
+    "image": "/images/promo/voucherSection/image.jpeg",
+    "colors": {
+      "bgColor": "#f5f0e8",
+      "titleColor": "#3d3329",
+      "textColor": "#5c5145",
+      "buttonBg": "#7d8c6e",
+      "buttonText": "#ffffff"
+    }
+  },
+  "locationSection": {
+    "title": "Gdzie nas znajdziesz",
+    "address": "ul. Jesionowa 18, 61-429 Poznań",
+    "parking": "darmowy parking na terenie studia",
+    "transport": "Autobusy: 213, 149, 175, 179\nTramwaje: 2, 9, 10",
+    "colors": {
+      "bgColor": "#fdfbf7",
+      "titleColor": "#3d3329",
+      "textColor": "#5c5145",
+      "iconColor": "#7d8c6e"
+    }
+  },
+  "ctaSection": {
+    "title": "Gotowa na nowe wyzwanie?",
+    "text": "Dołącz do nas i odkryj świat aerial!",
+    "buttonText": "sprawdź nasz grafik ",
+    "colors": {
+      "bgColor": "#7d8c6e",
+      "titleColor": "#ffffff",
+      "textColor": "#e8e2d9",
+      "buttonBg": "#ffffff",
+      "buttonText": "#7d8c6e"
+    }
+  },
+  "classCardsColors": {
+    "cardBg": "#ffffff",
+    "cardBorder": "#e8e2d9",
+    "cardHoverBorder": "#7d8c6e",
+    "iconColor": "#7d8c6e",
+    "titleColor": "#3d3329",
+    "descColor": "#8a7f72",
+    "linkColor": "#7d8c6e"
+  },
+  "pricingCardsColors": {
+    "cardBg": "#ffffff",
+    "cardBorder": "#e8e2d9",
+    "featuredBg": "#7d8c6e",
+    "featuredText": "#ffffff",
+    "badgeColor": "#7d8c6e",
+    "titleColor": "#3d3329",
+    "subtitleColor": "#8a7f72",
+    "priceColor": "#7d8c6e",
+    "featuresColor": "#5c5145"
+  },
+  "testimonialsColors": {
+    "cardBg": "#f5f0e8",
+    "starsColor": "#7d8c6e",
+    "textColor": "#3d3329",
+    "authorColor": "#3d3329",
+    "sourceColor": "#8a7f72"
+  }
+}
