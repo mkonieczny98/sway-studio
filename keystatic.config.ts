@@ -2,9 +2,15 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 import { colorField } from './lib/color-field';
 
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  storage: 
+    process.env.NODE_ENV === 'production'
+      ? {
+          kind: 'github',
+          repo: 'mkonieczny98/sway-studio',
+        }
+      : {
+          kind: 'local',
+        },
   ui: {
     brand: {
       name: 'Sway Studio - Panel',
