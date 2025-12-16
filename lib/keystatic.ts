@@ -7,6 +7,7 @@ export async function getSettings() {
     primaryColor: '#c9a227',
     secondaryColor: '#1a1a1a',
     accentColor: '#ffffff',
+    fitssey: 'https://app.fitssey.com/Swaypoledancestudio',
   };
 }
 
