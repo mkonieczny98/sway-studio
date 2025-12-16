@@ -1,18 +1,10 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 import { colorField } from './lib/color-field';
 
-// Na Vercel używamy GitHub storage, lokalnie - local
-const isVercel = process.env.VERCEL === '1';
-
 export default config({
-  storage: isVercel
-    ? {
-        kind: 'github',
-        repo: 'mkonieczny98/sway-studio',
-      }
-    : {
-        kind: 'local',
-      },
+  storage: {
+    kind: 'local',
+  },
   ui: {
     brand: {
       name: 'Sway Studio - Panel',
