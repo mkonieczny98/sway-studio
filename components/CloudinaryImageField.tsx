@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { CldUploadWidget } from 'next-cloudinary';
-// eslint-disable-next-line @next/next/no-img-element
 
 interface CloudinaryImageFieldProps {
   value: string;

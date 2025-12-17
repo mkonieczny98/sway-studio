@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -103,9 +104,14 @@ export default async function ZajeciaPage() {
                 animation={index % 2 === 0 ? 'fade-left' : 'fade-right'} 
                 className={`offer-image ${zajecieSingle.imageOrientation === 'vertical' ? 'offer-image-vertical' : ''}`}
               >
-                <img
+                <Image
                   src={zajecieSingle.image || 'https://swaypoledancestudio.pl/wp-content/uploads/elementor/thumbs/3B0A9050-facebook-pgn10apm3vfpkfxcw8set7eua95vejud6mjyiukck0.jpg'}
                   alt={typeof zajecieSingle.title === 'object' ? (zajecieSingle.title as any)?.name : zajecieSingle.title || 'Zajęcia'}
+                  width={900}
+                  height={600}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="offer-image-media"
+                  priority={index === 0}
                 />
               </AnimatedSection>
             </div>

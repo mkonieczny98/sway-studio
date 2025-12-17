@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';
 import { useState } from 'react';
 
@@ -60,10 +61,13 @@ export default function UploadPage() {
               background: '#f5f5f5',
               borderRadius: '8px'
             }}>
-              <img 
-                src={url} 
-                alt="" 
-                style={{ maxWidth: '300px', borderRadius: '4px' }}
+              <Image 
+                src={url}
+                alt={`Przesłane zdjęcie ${i + 1}`}
+                width={300}
+                height={200}
+                style={{ width: '100%', height: 'auto', maxWidth: '300px', borderRadius: '4px' }}
+                priority
               />
               <div style={{ marginTop: '10px' }}>
                 <input 
