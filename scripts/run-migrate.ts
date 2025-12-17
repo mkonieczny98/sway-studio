@@ -1,7 +1,7 @@
 import { getPayload } from 'payload'
 
 async function main() {
-  const imported = await import('../payload.config.ts')
+  const imported = await import('../payload.config')
   const config = await imported.default
 
   // eslint-disable-next-line no-console
