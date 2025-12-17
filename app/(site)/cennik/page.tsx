@@ -39,14 +39,14 @@ export default async function CennikPage() {
       {/* Pricing Section */}
       <section className="section">
         <div className="container">
-          {cennikData?.categories?.map((table, tableIndex) => (
+          {cennikData?.categories?.map((table: any, tableIndex: number) => (
             <AnimatedSection key={table.name} delay={tableIndex * 100}>
               <div className="pricing-table">
                 <div className="pricing-table-header">
                   <h3>{table.name}</h3>
                 </div>
                 <div className="pricing-table-body">
-                  {table.items?.map((item, itemIndex) => (
+                  {table.items?.map((item: any, itemIndex: number) => (
                     <div className="pricing-row" key={itemIndex}>
                       <span className="pricing-row-name">{item.name}</span>
                       <span className="pricing-row-price">{item.price}</span>
