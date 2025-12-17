@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { CldUploadWidget } from 'next-cloudinary';
+// eslint-disable-next-line @next/next/no-img-element
 
 interface CloudinaryImageFieldProps {
   value: string;
@@ -15,6 +16,7 @@ export default function CloudinaryImageField({ value, onChange }: CloudinaryImag
     <div style={{ marginTop: '8px' }}>
       {value && (
         <div style={{ marginBottom: '12px' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src={value} 
             alt="Preview" 

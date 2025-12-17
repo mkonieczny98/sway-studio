@@ -180,7 +180,7 @@ export default async function HomePage() {
           </div>
 
           <div className="classes-grid">
-            {zajecia.map((z, index) => (
+            {zajecia.map((z: any, index: number) => (
               <AnimatedSection key={z.slug} delay={index * 100} className="class-card">
                 <div className="class-card-inner">
                   <div className="class-icon">
@@ -224,7 +224,7 @@ export default async function HomePage() {
           </div>
 
           <div className="pricing-grid">
-            {karnety.map((karnet, index) => (
+            {karnety.map((karnet: any, index: number) => (
               <AnimatedSection key={karnet.slug} delay={index * 100} className={`pricing-card ${karnet.isPopular ? 'pricing-card-featured' : ''}`}>
                 {karnet.isPopular && <div className="pricing-badge">Popularny</div>}
                 <div className="pricing-header">
@@ -236,7 +236,7 @@ export default async function HomePage() {
                   <span className="price-currency">zł</span>
                 </div>
                 <ul className="pricing-features">
-                  {karnet.features?.map((feature, i) => (
+                  {karnet.features?.map((feature: string, i: number) => (
                     <li key={i}>{feature}</li>
                   ))}
                 </ul>
@@ -265,8 +265,8 @@ export default async function HomePage() {
           </div>
 
           <div className="testimonials-grid">
-            {opinie.map((opinia, index) => (
-              <AnimatedSection key={opinia.slug} delay={index * 100} className="testimonial-card">
+            {opinie.map((opinia: any, index: number) => (
+              <AnimatedSection key={opinia.author} delay={index * 100} className="testimonial-card">
                 <div className="testimonial-content">
                   <div className="testimonial-stars">{'★'.repeat(opinia.rating || 5)}</div>
                   <p className="testimonial-text">

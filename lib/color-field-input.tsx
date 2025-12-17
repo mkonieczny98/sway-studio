@@ -25,6 +25,7 @@ export function ColorFieldInput({
     if (value !== hexValue) {
       setHexValue(value || defaultValue);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {

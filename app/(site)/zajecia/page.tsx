@@ -46,7 +46,7 @@ export default async function ZajeciaPage() {
       </section>
 
       {/* Dynamic classes from Keystatic */}
-      {zajecia.map((zajecieSingle, index) => (
+      {zajecia.map((zajecieSingle: any, index: number) => (
         <section 
           key={zajecieSingle.slug} 
           className={`section offer-section ${index % 2 === 1 ? 'offer-section-alt' : ''}`} 
@@ -86,7 +86,7 @@ export default async function ZajeciaPage() {
                 {/* Features list */}
                 {zajecieSingle.features && zajecieSingle.features.length > 0 && (
                   <ul className="offer-features">
-                    {zajecieSingle.features.map((feature, featureIndex) => (
+                    {zajecieSingle.features.map((feature: string, featureIndex: number) => (
                       <li key={featureIndex}>
                         <CheckIcon />
                         {feature}
