@@ -30,9 +30,9 @@ export const FAQ: CollectionConfig = {
     },
     {
       name: 'answer',
-      type: 'richText',
+      type: 'textarea',
       label: 'Odpowiedź',
-      required: true,
+      required: false,
     },
     {
       name: 'order',

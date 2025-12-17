@@ -43,9 +43,11 @@ export const Zajecia: CollectionConfig = {
     },
     {
       name: 'image',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Zdjęcie zajęć',
+      type: 'text',
+      label: 'Zdjęcie zajęć (URL)',
+      admin: {
+        description: 'URL do zdjęcia (np. z Cloudinary)',
+      },
     },
     {
       name: 'imageOrientation',
