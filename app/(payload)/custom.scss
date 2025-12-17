@@ -1,2 +1,415 @@
 /* eslint-disable */
-// Payload admin custom styles
+// Payload admin custom styles - Sway Pole Dance Studio Theme
+
+// ============================================
+// ZMIENNE KOLORYSTYCZNE
+// ============================================
+:root {
+  // Kolory główne Sway
+  --sway-primary: #7d8c6e;
+  --sway-primary-light: #9aab8a;
+  --sway-primary-dark: #5f6b52;
+  --sway-secondary: #f5f0e8;
+  --sway-dark: #3d3329;
+  --sway-light: #fdfbf7;
+  --sway-gray: #8a7f72;
+
+  // Nadpisanie zmiennych Payload
+  --theme-elevation-0: var(--sway-light);
+  --theme-elevation-50: #f8f5f0;
+  --theme-elevation-100: #f0ebe3;
+  --theme-elevation-150: #e5ddd1;
+  --theme-elevation-200: #d9cfc0;
+  --theme-elevation-250: #cdc1af;
+  --theme-elevation-300: #c1b39e;
+  --theme-elevation-350: #b5a58d;
+  --theme-elevation-400: #a9977c;
+  --theme-elevation-450: #9d896b;
+  --theme-elevation-500: var(--sway-gray);
+  --theme-elevation-550: #7a6f62;
+  --theme-elevation-600: #6a5f52;
+  --theme-elevation-650: #5a4f42;
+  --theme-elevation-700: #4a3f32;
+  --theme-elevation-750: var(--sway-dark);
+  --theme-elevation-800: #332921;
+  --theme-elevation-850: #231b15;
+  --theme-elevation-900: #130d09;
+  --theme-elevation-950: #030201;
+  --theme-elevation-1000: #000000;
+
+  // Kolor akcentu
+  --theme-success-50: #e8f5e9;
+  --theme-success-100: #c8e6c9;
+  --theme-success-200: #a5d6a7;
+  --theme-success-300: #81c784;
+  --theme-success-400: var(--sway-primary-light);
+  --theme-success-500: var(--sway-primary);
+  --theme-success-600: var(--sway-primary-dark);
+  --theme-success-700: #4a5a3e;
+  --theme-success-800: #3a4830;
+  --theme-success-900: #2a3622;
+}
+
+// ============================================
+// LAYOUT GŁÓWNY
+// ============================================
+.template-default,
+.template-minimal {
+  background: linear-gradient(135deg, var(--sway-light) 0%, var(--sway-secondary) 100%);
+}
+
+// ============================================
+// NAGŁÓWEK / NAV
+// ============================================
+.nav {
+  background: var(--sway-dark) !important;
+  border-right: 1px solid rgba(125, 140, 110, 0.3) !important;
+  
+  .nav__brand {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+.nav-group__toggle,
+.nav__link {
+  color: rgba(255,255,255,0.85) !important;
+  transition: all 0.2s ease !important;
+  border-radius: 8px !important;
+  margin: 2px 8px !important;
+  
+  &:hover {
+    background: var(--sway-primary) !important;
+    color: white !important;
+  }
+  
+  &.active {
+    background: var(--sway-primary) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+}
+
+.nav-group__content {
+  .nav__link {
+    padding-left: 2rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+// ============================================
+// HEADER
+// ============================================
+header.app-header {
+  background: white !important;
+  border-bottom: 1px solid var(--sway-secondary) !important;
+  box-shadow: 0 2px 8px rgba(61, 51, 41, 0.05) !important;
+}
+
+// ============================================
+// KARTY I PANELE
+// ============================================
+.card,
+.collection-list__card,
+.document-fields {
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 12px rgba(61, 51, 41, 0.08) !important;
+  border: 1px solid rgba(125, 140, 110, 0.15) !important;
+  overflow: hidden;
+}
+
+.group-field__wrap {
+  background: var(--sway-secondary) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(125, 140, 110, 0.2) !important;
+  padding: 1.5rem !important;
+}
+
+// ============================================
+// PRZYCISKI
+// ============================================
+.btn {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  
+  &--style-primary {
+    background: var(--sway-primary) !important;
+    border-color: var(--sway-primary) !important;
+    
+    &:hover {
+      background: var(--sway-primary-dark) !important;
+      border-color: var(--sway-primary-dark) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(125, 140, 110, 0.3);
+    }
+  }
+  
+  &--style-secondary {
+    background: var(--sway-secondary) !important;
+    border-color: var(--sway-primary) !important;
+    color: var(--sway-dark) !important;
+    
+    &:hover {
+      background: var(--sway-primary-light) !important;
+      color: white !important;
+    }
+  }
+}
+
+// ============================================
+// FORMULARZE
+// ============================================
+.field-type {
+  margin-bottom: 1.25rem !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+textarea,
+select,
+.react-select__control {
+  border-radius: 8px !important;
+  border: 1.5px solid #ddd !important;
+  transition: all 0.2s ease !important;
+  background: white !important;
+  
+  &:focus,
+  &:focus-within {
+    border-color: var(--sway-primary) !important;
+    box-shadow: 0 0 0 3px rgba(125, 140, 110, 0.15) !important;
+    outline: none !important;
+  }
+}
+
+.react-select__control--is-focused {
+  border-color: var(--sway-primary) !important;
+  box-shadow: 0 0 0 3px rgba(125, 140, 110, 0.15) !important;
+}
+
+.react-select__option--is-selected {
+  background: var(--sway-primary) !important;
+}
+
+.react-select__option--is-focused {
+  background: var(--sway-secondary) !important;
+}
+
+label {
+  color: var(--sway-dark) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+// ============================================
+// TABELE
+// ============================================
+.table {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  
+  th {
+    background: var(--sway-secondary) !important;
+    color: var(--sway-dark) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  tr {
+    transition: background 0.15s ease !important;
+    
+    &:hover {
+      background: rgba(125, 140, 110, 0.05) !important;
+    }
+  }
+  
+  td {
+    border-color: var(--sway-secondary) !important;
+  }
+}
+
+// ============================================
+// PILLS / BADGES
+// ============================================
+.pill {
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  
+  &--style-light-gray {
+    background: var(--sway-secondary) !important;
+    color: var(--sway-dark) !important;
+  }
+  
+  &--has-action:hover {
+    background: var(--sway-primary-light) !important;
+  }
+}
+
+// ============================================
+// DASHBOARD CARDS
+// ============================================
+.dashboard__card {
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(61, 51, 41, 0.08) !important;
+  border: 1px solid rgba(125, 140, 110, 0.1) !important;
+  transition: all 0.25s ease !important;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(61, 51, 41, 0.12) !important;
+    border-color: var(--sway-primary) !important;
+  }
+  
+  .dashboard__card-title {
+    color: var(--sway-dark) !important;
+    font-weight: 600 !important;
+  }
+}
+
+// ============================================
+// LOGO CUSTOMOWE
+// ============================================
+.graphic-logo {
+  max-width: 140px !important;
+  
+  svg {
+    fill: var(--sway-primary) !important;
+  }
+}
+
+// ============================================
+// SIDEBAR GRUPY
+// ============================================
+.nav-group {
+  margin-bottom: 0.5rem !important;
+  
+  .nav-group__label {
+    color: rgba(255,255,255,0.5) !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    padding: 0.75rem 1.25rem 0.5rem !important;
+    font-weight: 600 !important;
+  }
+}
+
+// ============================================
+// TOASTS / NOTIFICATIONS
+// ============================================
+.toast-container {
+  .toast {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+  }
+  
+  .toast--success {
+    background: var(--sway-primary) !important;
+  }
+}
+
+// ============================================
+// LOGIN PAGE
+// ============================================
+.template-minimal {
+  background: linear-gradient(135deg, var(--sway-dark) 0%, #2a2320 100%) !important;
+  
+  .login {
+    background: white !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+    padding: 3rem !important;
+  }
+  
+  .form-submit {
+    .btn {
+      width: 100% !important;
+      padding: 1rem !important;
+      font-size: 1rem !important;
+    }
+  }
+}
+
+// ============================================
+// ANIMACJE
+// ============================================
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.document-fields,
+.collection-list,
+.dashboard {
+  animation: fadeIn 0.3s ease-out;
+}
+
+// ============================================
+// SCROLLBAR
+// ============================================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sway-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sway-primary);
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--sway-primary-dark);
+  }
+}
+
+// ============================================
+// RICH TEXT EDITOR
+// ============================================
+.rich-text {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  
+  .rich-text__toolbar {
+    background: var(--sway-secondary) !important;
+    border-bottom: 1px solid rgba(125, 140, 110, 0.2) !important;
+  }
+}
+
+// ============================================
+// UPLOAD / MEDIA
+// ============================================
+.upload {
+  border-radius: 12px !important;
+  border: 2px dashed var(--sway-primary) !important;
+  background: rgba(125, 140, 110, 0.05) !important;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    background: rgba(125, 140, 110, 0.1) !important;
+    border-color: var(--sway-primary-dark) !important;
+  }
+}
+
+// ============================================
+// DRAWER / MODAL
+// ============================================
+.drawer {
+  background: white !important;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.1) !important;
+}
+
+.modal__wrapper {
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
+}
