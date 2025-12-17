@@ -1,6 +1,7 @@
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
+import { pl } from '@payloadcms/translations/languages/pl'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -32,6 +33,10 @@ export default buildConfig({
     meta: {
       titleSuffix: '- Sway Studio',
     },
+  },
+  i18n: {
+    supportedLanguages: { pl },
+    fallbackLanguage: 'pl',
   },
   collections: [Users, Media, Zajecia, Karnety, Opinie, FAQ],
   globals: [
