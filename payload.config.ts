@@ -5,23 +5,23 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 // Collections
-import { Users } from './payload/collections/Users'
-import { Media } from './payload/collections/Media'
-import { Zajecia } from './payload/collections/Zajecia'
-import { Karnety } from './payload/collections/Karnety'
-import { Opinie } from './payload/collections/Opinie'
-import { FAQ } from './payload/collections/FAQ'
+import { Users } from './payload/collections/Users.ts'
+import { Media } from './payload/collections/Media.ts'
+import { Zajecia } from './payload/collections/Zajecia.ts'
+import { Karnety } from './payload/collections/Karnety.ts'
+import { Opinie } from './payload/collections/Opinie.ts'
+import { FAQ } from './payload/collections/FAQ.ts'
 
 // Globals
-import { Homepage } from './payload/globals/Homepage'
-import { Settings } from './payload/globals/Settings'
-import { Navigation } from './payload/globals/Navigation'
-import { Footer } from './payload/globals/Footer'
-import { ZajeciaPage } from './payload/globals/ZajeciaPage'
-import { CennikPage } from './payload/globals/CennikPage'
-import { KontaktPage } from './payload/globals/KontaktPage'
-import { FAQPage } from './payload/globals/FAQPage'
-import { RegulaminPage } from './payload/globals/RegulaminPage'
+import { Homepage } from './payload/globals/Homepage.ts'
+import { Settings } from './payload/globals/Settings.ts'
+import { Navigation } from './payload/globals/Navigation.ts'
+import { Footer } from './payload/globals/Footer.ts'
+import { ZajeciaPage } from './payload/globals/ZajeciaPage.ts'
+import { CennikPage } from './payload/globals/CennikPage.ts'
+import { KontaktPage } from './payload/globals/KontaktPage.ts'
+import { FAQPage } from './payload/globals/FAQPage.ts'
+import { RegulaminPage } from './payload/globals/RegulaminPage.ts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
