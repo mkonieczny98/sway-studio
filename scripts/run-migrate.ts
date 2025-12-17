@@ -10,25 +10,12 @@ async function main() {
   const payload = await getPayload({ config })
 
   // eslint-disable-next-line no-console
-  console.log('Creating migration...')
+  console.log('Running migrations...')
 
-  await payload.db.migrationDir
-
-  // Create tables via push (no migration files needed)
-  // eslint-disable-next-line no-console
-  console.log('Pushing schema to database...')
-
-  // @ts-ignore - drizzle push
-  if (payload.db.push) {
-    await payload.db.push({ payload })
-  } else {
-    // eslint-disable-next-line no-console
-    console.log('Push not available, running migrate instead...')
-    await payload.db.migrate()
-  }
+  await payload.db.migrate()
 
   // eslint-disable-next-line no-console
-  console.log('Schema pushed successfully')
+  console.log('Migrations completed successfully')
 
   process.exit(0)
 }
