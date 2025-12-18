@@ -67,25 +67,6 @@ body {
 .drawer__content,
 .modal__content {
   padding: var(--gutter-h);
-  }
-  
-  td {
-    padding: 16px 20px !important;
-    border-color: var(--sway-sand) !important;
-    font-size: 14px !important;
-  }
-  
-  tr {
-    transition: var(--transition-fast) !important;
-    
-    &:hover {
-      background: var(--bg-hover) !important;
-    }
-  }
-  
-  tbody tr:last-child td {
-    border-bottom: none !important;
-  }
 }
 
 // ============================================
