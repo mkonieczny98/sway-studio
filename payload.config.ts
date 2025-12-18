@@ -23,8 +23,6 @@ import { CennikPage } from './payload/globals/CennikPage'
 import { KontaktPage } from './payload/globals/KontaktPage'
 import { FAQPage } from './payload/globals/FAQPage'
 import { RegulaminPage } from './payload/globals/RegulaminPage'
-import { PayloadLogo } from './components/PayloadLogo'
-import { PayloadIcon } from './components/PayloadIcon'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,8 +35,8 @@ export default buildConfig({
     },
     components: {
       graphics: {
-        Logo: PayloadLogo,
-        Icon: PayloadIcon,
+        Logo: '@/components/PayloadLogo#PayloadLogo',
+        Icon: '@/components/PayloadIcon#PayloadIcon',
       },
     },
   },
