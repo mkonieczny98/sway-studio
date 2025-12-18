@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PayloadIcon = () => (
+export const PayloadIcon = (_props: any) => (
   <div style={{ 
     width: '30px', 
     height: '30px', 
