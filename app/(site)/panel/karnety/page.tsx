@@ -27,7 +27,7 @@ export default async function KarnetyPage() {
             Zarządzaj ofertą karnetów i cenami
           </p>
         </div>
-        <Link href="/admin/karnety/new">
+        <Link href="/panel/karnety/new">
           <Button className="gap-2">
             <Plus className="h-4 w-4" />
             Dodaj karnet
@@ -94,7 +94,7 @@ export default async function KarnetyPage() {
           <Card className="md:col-span-2 lg:col-span-3">
             <CardContent className="flex flex-col items-center justify-center py-12">
               <p className="text-muted-foreground mb-4">Brak karnetów do wyświetlenia</p>
-              <Link href="/admin/karnety/new">
+              <Link href="/panel/karnety/new">
                 <Button>Dodaj pierwszy karnet</Button>
               </Link>
             </CardContent>

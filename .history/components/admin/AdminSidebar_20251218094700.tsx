@@ -81,7 +81,7 @@ export function AdminSidebar() {
               <div className="space-y-1">
                 {group.items.map((item) => {
                   const isActive = pathname === item.href || 
-                    (item.href !== '/panel' && pathname.startsWith(item.href))
+                    (item.href !== '/admin' && pathname.startsWith(item.href))
                   return (
                     <Link
                       key={item.name}
@@ -122,4 +122,3 @@ export function AdminSidebar() {
     </aside>
   )
 }
-

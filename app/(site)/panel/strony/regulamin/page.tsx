@@ -3,20 +3,20 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, Save } from 'lucide-react'
 import Link from 'next/link'
 
-export default function NawigacjaPage() {
+export default function RegulaminStronaPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/admin/ustawienia">
+          <Link href="/panel/strony">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Nawigacja</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Regulamin</h1>
             <p className="text-muted-foreground">
-              Konfiguracja menu głównego
+              Edytuj treść regulaminu
             </p>
           </div>
         </div>
@@ -32,7 +32,7 @@ export default function NawigacjaPage() {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
-            Edycja nawigacji będzie dostępna wkrótce.
+            Edycja tej strony będzie dostępna wkrótce.
           </p>
         </CardContent>
       </Card>

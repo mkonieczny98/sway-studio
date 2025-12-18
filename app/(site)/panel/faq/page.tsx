@@ -27,7 +27,7 @@ export default async function FAQPage() {
             Zarządzaj często zadawanymi pytaniami
           </p>
         </div>
-        <Link href="/admin/faq/new">
+        <Link href="/panel/faq/new">
           <Button className="gap-2">
             <Plus className="h-4 w-4" />
             Dodaj pytanie
@@ -69,7 +69,7 @@ export default async function FAQPage() {
             <CardContent className="flex flex-col items-center justify-center py-12">
               <HelpCircle className="h-12 w-12 text-muted-foreground mb-4" />
               <p className="text-muted-foreground mb-4">Brak pytań FAQ</p>
-              <Link href="/admin/faq/new">
+              <Link href="/panel/faq/new">
                 <Button>Dodaj pierwsze pytanie</Button>
               </Link>
             </CardContent>

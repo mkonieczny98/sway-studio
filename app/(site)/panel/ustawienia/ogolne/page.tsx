@@ -8,7 +8,7 @@ export default function OgolnePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/admin/ustawienia">
+          <Link href="/panel/ustawienia">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-5 w-5" />
             </Button>

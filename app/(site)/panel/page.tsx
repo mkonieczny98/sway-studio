@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                 <p className="text-xs text-muted-foreground mt-1">
                   Hero, sekcje, promocje - wszystko w jednym miejscu
                 </p>
-                <Link href="/admin/strony/homepage" className="mt-2 inline-block text-xs text-gold hover:underline">
+                <Link href="/panel/strony/homepage" className="mt-2 inline-block text-xs text-gold hover:underline">
                   Edytuj →
                 </Link>
               </div>
@@ -151,7 +151,7 @@ export default function AdminDashboard() {
                 <p className="text-xs text-muted-foreground mt-1">
                   Harmonogram wyświetlany na stronie
                 </p>
-                <Link href="/admin/ustawienia" className="mt-2 inline-block text-xs text-gold hover:underline">
+                <Link href="/panel/ustawienia" className="mt-2 inline-block text-xs text-gold hover:underline">
                   Konfiguruj →
                 </Link>
               </div>

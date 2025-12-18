@@ -27,7 +27,7 @@ export default async function ZajeciaPage() {
             Zarządzaj ofertą zajęć w Sway Studio
           </p>
         </div>
-        <Link href="/admin/zajecia/new">
+        <Link href="/panel/zajecia/new">
           <Button className="gap-2">
             <Plus className="h-4 w-4" />
             Dodaj zajęcia
@@ -76,7 +76,7 @@ export default async function ZajeciaPage() {
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-12">
               <p className="text-muted-foreground mb-4">Brak zajęć do wyświetlenia</p>
-              <Link href="/admin/zajecia/new">
+              <Link href="/panel/zajecia/new">
                 <Button>Dodaj pierwsze zajęcia</Button>
               </Link>
             </CardContent>

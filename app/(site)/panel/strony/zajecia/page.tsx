@@ -3,20 +3,20 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, Save } from 'lucide-react'
 import Link from 'next/link'
 
-export default function StopkaPage() {
+export default function ZajeciaStronaPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/admin/ustawienia">
+          <Link href="/panel/strony">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Stopka</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Strona Zajęć</h1>
             <p className="text-muted-foreground">
-              Konfiguracja stopki strony
+              Edytuj nagłówek i opisy strony zajęć
             </p>
           </div>
         </div>
@@ -32,7 +32,7 @@ export default function StopkaPage() {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
-            Edycja stopki będzie dostępna wkrótce.
+            Edycja tej strony będzie dostępna wkrótce.
           </p>
         </CardContent>
       </Card>

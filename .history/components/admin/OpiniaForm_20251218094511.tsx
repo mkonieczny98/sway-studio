@@ -54,7 +54,7 @@ export function OpiniaForm({ initialData, isNew = false }: OpiniaFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/panel/opinie">
+          <Link href="/admin/opinie">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-5 w-5" />
             </Button>
@@ -170,4 +170,3 @@ export function OpiniaForm({ initialData, isNew = false }: OpiniaFormProps) {
     </form>
   )
 }
-

@@ -78,7 +78,7 @@ export function KarnetForm({ initialData, isNew = false }: KarnetFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/admin/karnety">
+          <Link href="/panel/karnety">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-5 w-5" />
             </Button>
@@ -239,3 +239,4 @@ export function KarnetForm({ initialData, isNew = false }: KarnetFormProps) {
     </form>
   )
 }
+
