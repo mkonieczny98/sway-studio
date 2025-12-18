@@ -1,17 +1,9 @@
-// Adapter - mapuje dane z plików JSON na format oczekiwany przez komponenty
-// Używa GitHub API do zapisu na produkcji (Vercel ma read-only filesystem)
-
 import fs from 'fs/promises'
 import path from 'path'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
-// GitHub config for production writes
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN
-const GITHUB_REPO = process.env.GITHUB_REPO || 'mkonieczny98/sway-studio'
-const GITHUB_BRANCH = process.env.GITHUB_BRANCH || 'main'
-
-// ============ FILE OPERATIONS ============
+// ============ GENERIC HELPERS ============
 
 async function readJsonFile<T>(filePath: string): Promise<T | null> {
   try {
@@ -24,31 +16,10 @@ async function readJsonFile<T>(filePath: string): Promise<T | null> {
   }
 }
 
-async function readDirectory(dirPath: string): Promise<string[]> {
-  try {
-    const fullPath = path.join(CONTENT_DIR, dirPath)
-    const entries = await fs.readdir(fullPath, { withFileTypes: true })
-    return entries
-      .filter(e => e.isFile() && e.name.endsWith('.json'))
-      .map(e => e.name)
-  } catch (error) {
-    console.error(`Error reading directory ${dirPath}:`, error)
-    return []
-  }
-}
-
 async function writeJsonFile<T>(filePath: string, data: T): Promise<boolean> {
-  const content = JSON.stringify(data, null, 2)
-  
-  // On production (Vercel), use GitHub API
-  if (process.env.VERCEL && GITHUB_TOKEN) {
-    return writeViaGitHub(filePath, content)
-  }
-  
-  // Local development - write directly
   try {
     const fullPath = path.join(CONTENT_DIR, filePath)
-    await fs.writeFile(fullPath, content, 'utf-8')
+    await fs.writeFile(fullPath, JSON.stringify(data, null, 2), 'utf-8')
     return true
   } catch (error) {
     console.error(`Error writing ${filePath}:`, error)
@@ -56,106 +27,24 @@ async function writeJsonFile<T>(filePath: string, data: T): Promise<boolean> {
   }
 }
 
-async function deleteFile(filePath: string): Promise<boolean> {
-  // On production (Vercel), use GitHub API
-  if (process.env.VERCEL && GITHUB_TOKEN) {
-    return deleteViaGitHub(filePath)
+async function readDirectory(dirPath: string): Promise<string[]> {
+  try {
+    const fullPath = path.join(CONTENT_DIR, dirPath)
+    const files = await fs.readdir(fullPath)
+    return files.filter(f => f.endsWith('.json'))
+  } catch (error) {
+    console.error(`Error reading directory ${dirPath}:`, error)
+    return []
   }
-  
-  // Local development - delete directly
+}
+
+async function deleteJsonFile(filePath: string): Promise<boolean> {
   try {
     const fullPath = path.join(CONTENT_DIR, filePath)
     await fs.unlink(fullPath)
     return true
   } catch (error) {
     console.error(`Error deleting ${filePath}:`, error)
-    return false
-  }
-}
-
-// ============ GITHUB API ============
-
-async function getFileSha(filePath: string): Promise<string | null> {
-  try {
-    const response = await fetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/contents/content/${filePath}?ref=${GITHUB_BRANCH}`,
-      {
-        headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.v3+json',
-        },
-      }
-    )
-    if (response.ok) {
-      const data = await response.json()
-      return data.sha
-    }
-    return null
-  } catch {
-    return null
-  }
-}
-
-async function writeViaGitHub(filePath: string, content: string): Promise<boolean> {
-  try {
-    const sha = await getFileSha(filePath)
-    
-    const response = await fetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/contents/content/${filePath}`,
-      {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: `Update ${filePath} via CMS`,
-          content: Buffer.from(content).toString('base64'),
-          branch: GITHUB_BRANCH,
-          ...(sha && { sha }),
-        }),
-      }
-    )
-    
-    if (!response.ok) {
-      const error = await response.text()
-      console.error('GitHub API error:', error)
-      return false
-    }
-    
-    return true
-  } catch (error) {
-    console.error('Error writing via GitHub:', error)
-    return false
-  }
-}
-
-async function deleteViaGitHub(filePath: string): Promise<boolean> {
-  try {
-    const sha = await getFileSha(filePath)
-    if (!sha) return false
-    
-    const response = await fetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/contents/content/${filePath}`,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: `Delete ${filePath} via CMS`,
-          sha,
-          branch: GITHUB_BRANCH,
-        }),
-      }
-    )
-    
-    return response.ok
-  } catch (error) {
-    console.error('Error deleting via GitHub:', error)
     return false
   }
 }
@@ -220,11 +109,6 @@ export async function getZajeciaById(id: string): Promise<Zajecia | null> {
   return { ...data, id }
 }
 
-export async function getZajeciaBySlug(slug: string): Promise<Zajecia | null> {
-  const all = await getAllZajecia()
-  return all.find(z => z.slug === slug) || null
-}
-
 export async function createZajecia(data: Omit<Zajecia, 'id'>): Promise<Zajecia> {
   const slug = data.slug || generateSlug(data.title)
   const id = slug
@@ -238,13 +122,13 @@ export async function updateZajecia(id: string, data: Partial<Zajecia>): Promise
   if (!existing) return null
   
   const updated = { ...existing, ...data }
-  const { id: _, ...dataToSave } = updated
-  await writeJsonFile(`zajecia/${id}.json`, dataToSave)
-  return updated
+  delete (updated as any).id // Don't save id in file
+  await writeJsonFile(`zajecia/${id}.json`, updated)
+  return { ...updated, id }
 }
 
 export async function deleteZajecia(id: string): Promise<boolean> {
-  return deleteFile(`zajecia/${id}.json`)
+  return deleteJsonFile(`zajecia/${id}.json`)
 }
 
 // ============ KARNETY ============
@@ -294,13 +178,13 @@ export async function updateKarnet(id: string, data: Partial<Karnet>): Promise<K
   if (!existing) return null
   
   const updated = { ...existing, ...data }
-  const { id: _, ...dataToSave } = updated
-  await writeJsonFile(`karnety/${id}.json`, dataToSave)
-  return updated
+  delete (updated as any).id
+  await writeJsonFile(`karnety/${id}.json`, updated)
+  return { ...updated, id }
 }
 
 export async function deleteKarnet(id: string): Promise<boolean> {
-  return deleteFile(`karnety/${id}.json`)
+  return deleteJsonFile(`karnety/${id}.json`)
 }
 
 // ============ OPINIE ============
@@ -347,13 +231,13 @@ export async function updateOpinia(id: string, data: Partial<Opinia>): Promise<O
   if (!existing) return null
   
   const updated = { ...existing, ...data }
-  const { id: _, ...dataToSave } = updated
-  await writeJsonFile(`opinie/${id}.json`, dataToSave)
-  return updated
+  delete (updated as any).id
+  await writeJsonFile(`opinie/${id}.json`, updated)
+  return { ...updated, id }
 }
 
 export async function deleteOpinia(id: string): Promise<boolean> {
-  return deleteFile(`opinie/${id}.json`)
+  return deleteJsonFile(`opinie/${id}.json`)
 }
 
 // ============ FAQ ============
@@ -399,16 +283,45 @@ export async function updateFAQ(id: string, data: Partial<FAQ>): Promise<FAQ | n
   if (!existing) return null
   
   const updated = { ...existing, ...data }
-  const { id: _, ...dataToSave } = updated
-  await writeJsonFile(`faq/${id}.json`, dataToSave)
-  return updated
+  delete (updated as any).id
+  await writeJsonFile(`faq/${id}.json`, updated)
+  return { ...updated, id }
 }
 
 export async function deleteFAQ(id: string): Promise<boolean> {
-  return deleteFile(`faq/${id}.json`)
+  return deleteJsonFile(`faq/${id}.json`)
 }
 
 // ============ GLOBALS ============
+
+export interface Homepage {
+  heroTitle?: string
+  heroSubtitle?: string
+  heroImage?: string
+  aboutTitle?: string
+  aboutSubtitle?: string
+  aboutDescription?: string
+  aboutImage?: string
+  classesTitle?: string
+  classesSubtitle?: string
+  testimonialsTitle?: string
+  testimonialsSubtitle?: string
+  ctaTitle?: string
+  ctaSubtitle?: string
+  ctaButtonText?: string
+  ctaButtonUrl?: string
+}
+
+export async function getHomepage(): Promise<Homepage | null> {
+  return readJsonFile<Homepage>('homepage.json')
+}
+
+export async function updateHomepage(data: Partial<Homepage>): Promise<Homepage | null> {
+  const existing = await getHomepage()
+  const updated = { ...existing, ...data }
+  await writeJsonFile('homepage.json', updated)
+  return updated
+}
 
 export interface Settings {
   siteName?: string
@@ -425,16 +338,8 @@ export interface Settings {
   }
 }
 
-export async function getSettings(): Promise<Settings> {
-  const data = await readJsonFile<Settings>('settings.json')
-  return data || {
-    siteName: 'Sway Pole Dance Studio',
-    colors: {
-      primary: '#7d8c6e',
-      secondary: '#f5f0e8',
-      primaryLight: '#9aab8a',
-    }
-  }
+export async function getSettings(): Promise<Settings | null> {
+  return readJsonFile<Settings>('settings.json')
 }
 
 export async function updateSettings(data: Partial<Settings>): Promise<Settings | null> {
@@ -444,63 +349,12 @@ export async function updateSettings(data: Partial<Settings>): Promise<Settings 
   return updated
 }
 
-export interface Homepage {
-  heroSection?: {
-    title?: string
-    highlight?: string
-    subtitle?: string
-    description?: string
-    buttonText?: string
-    heroImage?: string
-  }
-  aboutSection?: {
-    title?: string
-    text?: string
-    feature1?: string
-    feature2?: string
-    feature3?: string
-    image1?: string
-    image2?: string
-  }
-  promoSection?: {
-    title?: string
-    price?: string
-    description?: string
-    buttonText?: string
-  }
-  voucherSection?: {
-    title?: string
-    text?: string
-    buttonText?: string
-    image?: string
-  }
-  locationSection?: {
-    title?: string
-    address?: string
-    parking?: string
-    transport?: string
-  }
-}
-
-export async function getHomepage(): Promise<Homepage> {
-  const data = await readJsonFile<Homepage>('homepage.json')
-  return data || {}
-}
-
-export async function updateHomepage(data: Partial<Homepage>): Promise<Homepage | null> {
-  const existing = await getHomepage()
-  const updated = { ...existing, ...data }
-  await writeJsonFile('homepage.json', updated)
-  return updated
-}
-
 export interface Navigation {
   items?: { label: string; href: string; order?: number }[]
 }
 
-export async function getNavigation(): Promise<Navigation> {
-  const data = await readJsonFile<Navigation>('navigation.json')
-  return data || { items: [] }
+export async function getNavigation(): Promise<Navigation | null> {
+  return readJsonFile<Navigation>('navigation.json')
 }
 
 export async function updateNavigation(data: Navigation): Promise<Navigation | null> {
@@ -514,9 +368,8 @@ export interface Footer {
   copyright?: string
 }
 
-export async function getFooter(): Promise<Footer> {
-  const data = await readJsonFile<Footer>('footer.json')
-  return data || {}
+export async function getFooter(): Promise<Footer | null> {
+  return readJsonFile<Footer>('footer.json')
 }
 
 export async function updateFooter(data: Partial<Footer>): Promise<Footer | null> {
@@ -524,61 +377,4 @@ export async function updateFooter(data: Partial<Footer>): Promise<Footer | null
   const updated = { ...existing, ...data }
   await writeJsonFile('footer.json', updated)
   return updated
-}
-
-// ============ PAGE DATA ============
-
-export interface ZajeciaPage {
-  title?: string
-  subtitle?: string
-  description?: string
-}
-
-export async function getZajeciaPage(): Promise<ZajeciaPage> {
-  const data = await readJsonFile<ZajeciaPage>('zajecia-page.json')
-  return data || {}
-}
-
-export interface CennikPage {
-  title?: string
-  subtitle?: string
-  description?: string
-  notes?: string
-}
-
-export async function getCennikPage(): Promise<CennikPage> {
-  const data = await readJsonFile<CennikPage>('cennik-page.json')
-  return data || {}
-}
-
-export interface KontaktPage {
-  title?: string
-  subtitle?: string
-  description?: string
-}
-
-export async function getKontaktPage(): Promise<KontaktPage> {
-  const data = await readJsonFile<KontaktPage>('kontakt-page.json')
-  return data || {}
-}
-
-export interface FAQPage {
-  title?: string
-  subtitle?: string
-  description?: string
-}
-
-export async function getFAQPage(): Promise<FAQPage> {
-  const data = await readJsonFile<FAQPage>('faq-page.json')
-  return data || {}
-}
-
-export interface RegulaminPage {
-  title?: string
-  content?: string
-}
-
-export async function getRegulaminPage(): Promise<RegulaminPage> {
-  const data = await readJsonFile<RegulaminPage>('regulamin-page.json')
-  return data || {}
 }
