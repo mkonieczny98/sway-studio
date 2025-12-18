@@ -1,390 +1,223 @@
-/*
-  Payload Admin – minimalne poprawki UI
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  Poprzedni plik był agresywnym „theme’em” z masą !important i twardymi kolorami,
-  co bardzo łatwo rozwala layout (guttery/paddingi) i robi niespójny UI.
+:root {
+  /* Typography */
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Modern Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 
-  Ten plik zostawia domyślny wygląd Payload i dodaje tylko bezpieczne poprawki
-  spacingu/overflow.
-*/
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  /* Brand Colors - Sway Studio (Gold/Elegant) */
+  --brand-primary: #C4A962; /* Gold */
+  --brand-primary-hover: #D4B972;
+  --brand-dark: #1A1A1A;
+  --brand-light: #F9F9F9;
+  
+  /* Overriding Payload Variables - Light Mode */
+  --theme-elevation-0: #ffffff;
+  --theme-elevation-50: #f8f9fa;
+  --theme-elevation-100: #f1f3f5;
+  --theme-elevation-150: #e9ecef;
+  --theme-elevation-200: #dee2e6;
+  --theme-elevation-250: #ced4da;
+  --theme-elevation-300: #adb5bd;
+  --theme-elevation-350: #868e96;
+  --theme-elevation-400: #495057;
+  --theme-elevation-450: #343a40;
+  --theme-elevation-500: #212529;
+  --theme-elevation-800: #000000;
+  
+  --theme-primary-500: var(--brand-primary);
+  --theme-primary-600: var(--brand-primary-hover);
+  --theme-primary-light: rgba(196, 169, 98, 0.1);
+  
+  --theme-success-500: #2ecc71;
+  --theme-error-500: #e74c3c;
+  --theme-warning-500: #f1c40f;
+  
+  /* Spacing */
+  --base: 1rem;
 }
 
-html,
+[data-theme="dark"] {
+  /* Overriding Payload Variables - Dark Mode */
+  --theme-elevation-0: #121212;
+  --theme-elevation-50: #1a1a1a;
+  --theme-elevation-100: #222222;
+  --theme-elevation-150: #2a2a2a;
+  --theme-elevation-200: #333333;
+  --theme-elevation-250: #404040;
+  --theme-elevation-300: #555555;
+  --theme-elevation-350: #666666;
+  --theme-elevation-400: #888888;
+  --theme-elevation-450: #aaaaaa;
+  --theme-elevation-500: #cccccc;
+  --theme-elevation-800: #ffffff;
+  
+  --theme-primary-500: var(--brand-primary);
+  --theme-primary-600: var(--brand-primary-hover);
+}
+
 body {
-  height: 100%;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--theme-elevation-0);
 }
 
-body {
-  overflow-x: hidden;
-}
+/* --- Modern UI Improvements --- */
 
-/*
-  Bardzo szerokie widoki edycji (szczególnie na desktop) robią się nieczytelne.
-  Delikatnie ograniczamy szerokość samego „body” formularza.
-*/
-.document-fields__edit .document-fields__fields {
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Gdy nie ma sidebara, dopilnuj gutters żeby nie było „edge-to-edge”. */
-.document-fields:not(.document-fields--has-sidebar) .document-fields__edit .document-fields__fields {
-  padding-left: var(--gutter-h);
-  padding-right: var(--gutter-h);
-}
-
-/* Stabilniejsze odstępy pomiędzy polami (bez rozwalania gridów Payload). */
-.document-fields__fields > .field-type {
-  margin-bottom: var(--base);
-}
-
-/* Grupy – trochę powietrza, ale bez zmiany kolorów/ram. */
-.group-field__wrap {
-  padding: calc(var(--base) * 1.25);
-}
-
-/* Długie etykiety/opisy nie powinny rozpychać layoutu. */
-.field-label,
-.field-description {
-  overflow-wrap: anywhere;
-}
-
-/* Tabele potrafią powodować poziomy scroll całej strony. */
-.table,
-.table__wrap,
-.collection-list__table {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-/* Drawer/modal: spójny padding, żeby treść nie kleiła się do krawędzi. */
-.drawer__content,
-.modal__content {
-  padding: var(--gutter-h);
-}
-
-// ============================================
-// 🏷️ PILLS / BADGES
-// ============================================
-.pill {
-  border-radius: 20px !important;
-  font-weight: 600 !important;
-  font-size: 11px !important;
-  padding: 6px 14px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
+/* Sidebar */
+aside.nav {
+  background-color: var(--theme-elevation-50);
+  border-right: 1px solid var(--theme-elevation-150);
   
-  &--style-light-gray {
-    background: var(--sway-beige) !important;
-    color: var(--sway-brown) !important;
+  .nav__scroll {
+    padding: 20px;
   }
   
-  &--style-success {
-    background: linear-gradient(135deg, var(--sway-sage) 0%, var(--sway-sage-light) 100%) !important;
-    color: white !important;
-  }
-  
-  &--has-action:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-sm);
-  }
-}
-
-// ============================================
-// 📋 DASHBOARD
-// ============================================
-.dashboard {
-  padding: 32px !important;
-}
-
-.dashboard__card {
-  background: var(--bg-card) !important;
-  border-radius: var(--radius-xl) !important;
-  box-shadow: var(--shadow-md) !important;
-  border: 1px solid rgba(125, 140, 110, 0.08) !important;
-  padding: 28px !important;
-  transition: var(--transition-slow) !important;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--sway-sage), var(--sway-sage-light), var(--sway-gold));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: var(--transition-slow);
-  }
-  
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-xl) !important;
+  .nav__link {
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    margin-bottom: 2px;
     
-    &::before {
-      transform: scaleX(1);
+    &:hover, &.active {
+      background-color: var(--theme-elevation-150);
+      color: var(--theme-elevation-800);
+      transform: translateX(4px);
+    }
+    
+    &.active {
+      background-color: var(--theme-primary-light);
+      color: var(--brand-primary);
+      font-weight: 600;
     }
   }
   
-  .dashboard__card-title {
-    color: var(--sway-brown) !important;
-    font-weight: 700 !important;
-    font-size: 18px !important;
-    margin-bottom: 8px !important;
-  }
-  
-  .dashboard__card-description {
-    color: var(--sway-brown-light) !important;
-    font-size: 14px !important;
+  .nav-group__toggle {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--theme-elevation-400);
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 }
 
-// ============================================
-// 🔐 STRONA LOGOWANIA
-// ============================================
+/* Cards & Containers */
+.card, .group-field {
+  background: var(--theme-elevation-50);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  }
+}
+
+/* Inputs */
+input, textarea, select, .react-select__control {
+  border-radius: var(--radius-sm) !important;
+  border-color: var(--theme-elevation-200) !important;
+  background-color: var(--theme-elevation-0) !important;
+  transition: all 0.2s ease !important;
+  
+  &:focus, &:focus-within {
+    border-color: var(--brand-primary) !important;
+    box-shadow: 0 0 0 3px var(--theme-primary-light) !important;
+  }
+}
+
+/* Buttons */
+.btn {
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  
+  &--style-primary {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: #000; /* Black text on gold */
+    
+    &:hover {
+      background-color: var(--brand-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(196, 169, 98, 0.3);
+    }
+  }
+  
+  &--style-secondary {
+    background-color: var(--theme-elevation-100);
+    border-color: var(--theme-elevation-200);
+    color: var(--theme-elevation-800);
+    
+    &:hover {
+      background-color: var(--theme-elevation-200);
+    }
+  }
+}
+
+/* Header */
+header.app-header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--theme-elevation-150);
+  
+  [data-theme="dark"] & {
+    background: rgba(18, 18, 18, 0.8);
+  }
+}
+
+/* Tables */
+.table {
+  thead th {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--theme-elevation-400);
+    font-weight: 600;
+  }
+  
+  tbody tr {
+    transition: background-color 0.1s ease;
+    &:hover {
+      background-color: var(--theme-elevation-50);
+    }
+  }
+}
+
+/* Login Screen */
 .template-minimal {
-  background: linear-gradient(135deg, #2d2a26 0%, #1a1816 50%, #2d2a26 100%) !important;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(ellipse at 20% 20%, rgba(125, 140, 110, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(196, 169, 98, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+  .form-container {
+    background: var(--theme-elevation-0);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    border: 1px solid var(--theme-elevation-150);
   }
 }
 
-.login {
-  background: white !important;
-  border-radius: var(--radius-xl) !important;
-  box-shadow: var(--shadow-xl) !important;
-  padding: 48px !important;
-  max-width: 420px !important;
-  width: 100%;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, var(--sway-sage), var(--sway-gold), var(--sway-sage-light));
-    border-radius: calc(var(--radius-xl) + 2px);
-    z-index: -1;
-    opacity: 0.6;
-  }
-  
-  h1 {
-    color: var(--sway-brown) !important;
-    font-size: 28px !important;
-    font-weight: 700 !important;
-    text-align: center;
-    margin-bottom: 8px !important;
-  }
-  
-  .form-submit .btn {
-    width: 100% !important;
-    padding: 16px !important;
-    font-size: 15px !important;
-    margin-top: 12px !important;
-  }
-}
-
-// ============================================
-// 🎭 MODAL / DRAWER
-// ============================================
-.drawer {
-  background: white !important;
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.15) !important;
-  
-  .drawer__header {
-    background: linear-gradient(135deg, var(--sway-cream) 0%, var(--sway-beige) 100%) !important;
-    border-bottom: 1px solid var(--sway-sand) !important;
-    padding: 20px 24px !important;
-  }
-}
-
-.modal__wrapper {
-  background: white !important;
-  border-radius: var(--radius-xl) !important;
-  box-shadow: var(--shadow-xl) !important;
-  overflow: hidden;
-}
-
-.modal__content {
-  padding: 32px !important;
-}
-
-// ============================================
-// 📤 UPLOAD
-// ============================================
-.upload {
-  border-radius: var(--radius-lg) !important;
-  border: 2px dashed var(--sway-sage) !important;
-  background: linear-gradient(135deg, rgba(125, 140, 110, 0.03) 0%, rgba(125, 140, 110, 0.08) 100%) !important;
-  padding: 40px !important;
-  transition: var(--transition-normal) !important;
-  text-align: center;
-  
-  &:hover {
-    border-color: var(--sway-sage-dark) !important;
-    background: linear-gradient(135deg, rgba(125, 140, 110, 0.08) 0%, rgba(125, 140, 110, 0.15) 100%) !important;
-    transform: scale(1.01);
-  }
-  
-  .upload__label {
-    color: var(--sway-sage-dark) !important;
-    font-weight: 600 !important;
-  }
-}
-
-// ============================================
-// 🔔 TOAST / POWIADOMIENIA
-// ============================================
-.toast-container {
-  .toast {
-    border-radius: var(--radius-lg) !important;
-    box-shadow: var(--shadow-lg) !important;
-    padding: 16px 20px !important;
-    font-weight: 500 !important;
-    
-    &--success {
-      background: linear-gradient(135deg, var(--sway-sage) 0%, var(--sway-sage-dark) 100%) !important;
-    }
-    
-    &--error {
-      background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
-    }
-    
-    &--warning {
-      background: linear-gradient(135deg, var(--sway-gold) 0%, #b8941f 100%) !important;
-    }
-  }
-}
-
-// ============================================
-// 📜 RICH TEXT EDITOR
-// ============================================
-.rich-text {
-  border-radius: var(--radius-lg) !important;
-  border: 2px solid var(--sway-sand) !important;
-  overflow: hidden !important;
-  
-  &:focus-within {
-    border-color: var(--sway-sage) !important;
-    box-shadow: 0 0 0 4px rgba(125, 140, 110, 0.15) !important;
-  }
-  
-  .rich-text__toolbar {
-    background: linear-gradient(135deg, var(--sway-cream) 0%, var(--sway-beige) 100%) !important;
-    border-bottom: 1px solid var(--sway-sand) !important;
-    padding: 8px 12px !important;
-  }
-  
-  .rich-text__editor {
-    padding: 16px !important;
-    min-height: 200px;
-  }
-}
-
-// ============================================
-// 🎨 SCROLLBAR
-// ============================================
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--sway-cream);
-  border-radius: 5px;
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--sway-sage-light), var(--sway-sage));
-  border-radius: 5px;
-  border: 2px solid var(--sway-cream);
-  
+  background: var(--theme-elevation-200);
+  border-radius: 4px;
   &:hover {
-    background: linear-gradient(180deg, var(--sway-sage), var(--sway-sage-dark));
-  }
-}
-
-// ============================================
-// ✨ ANIMACJE
-// ============================================
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.document-fields,
-.collection-list,
-.dashboard,
-.login {
-  animation: fadeInUp 0.4s ease-out;
-}
-
-// Loading shimmer
-.skeleton {
-  background: linear-gradient(90deg, var(--sway-cream) 25%, var(--sway-beige) 50%, var(--sway-cream) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-// ============================================
-// 📱 RESPONSIVE
-// ============================================
-@media (max-width: 768px) {
-  .dashboard {
-    padding: 16px !important;
-  }
-  
-  .dashboard__card {
-    padding: 20px !important;
-  }
-  
-  .login {
-    padding: 32px 24px !important;
-    margin: 16px;
-  }
-  
-  .group-field__wrap {
-    padding: 16px !important;
+    background: var(--theme-elevation-300);
   }
 }

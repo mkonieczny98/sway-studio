@@ -23,6 +23,8 @@ import { CennikPage } from './payload/globals/CennikPage'
 import { KontaktPage } from './payload/globals/KontaktPage'
 import { FAQPage } from './payload/globals/FAQPage'
 import { RegulaminPage } from './payload/globals/RegulaminPage'
+import { PayloadLogo } from './components/PayloadLogo'
+import { PayloadIcon } from './components/PayloadIcon'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,6 +34,12 @@ export default buildConfig({
     user: Users.slug,
     meta: {
       titleSuffix: '- Sway Studio',
+    },
+    components: {
+      graphics: {
+        Logo: PayloadLogo,
+        Icon: PayloadIcon,
+      },
     },
   },
   i18n: {
